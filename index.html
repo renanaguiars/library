@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Livros - Biblioteca Central</title>
+</head>
+<body>
+    <main class="container">
+        <section class="box">
+            <header class="cabecalho">
+                <h1 id="titulo">Cadastro de Livros</h1>
+                <p id="subtitulo">Preencha as informações</p>
+            </header>
+        
+            <form>
+                <div class="input-group">
+                    <div class="campo">
+                        <input type="text" id="codigo" required placeholder="Código ISBN">
+                    </div>
+    
+                    <div class="campo">
+                        <input type="text" id="nome" required placeholder="Titulo">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="campo"> 
+                        <input type="text" id="autor" required placeholder="Autor(a)">
+                    </div>
+    
+                    <div class="campo">
+                        <input type="text" id="editora" required placeholder="Editora">
+                    </div>
+                </div>
+    
+                <div class="input-group"> 
+                    <div class="campo">
+                        <input type="number" id="paginas" required placeholder="Páginas">
+                    </div>
+    
+                    <div class="campo">
+                        <select id="genero" style="width: 230px; padding: 8px; border-radius: 5px;">
+                            <option selected disabled value="">Gênero...</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Policial">Policial</option>
+                            <option value="Auto-ajuda">Auto-ajuda</option>
+                            <option value="Finanças">Finanças</option>
+                            <option value="Sci-fi">Sci-fi</option>
+                            <option value="Biografia">Biografia</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group"> 
+                    <div class="campo">
+                        <input type="text" id="obs" placeholder="Observações"></input>
+                    </div>
+                    <div class="campo">
+                        <input type="date" id="data" style="width: 230px;">
+                    </div>
+                </div>
+            </form>
+            <div class="input-group">
+                <button id="btn" type="submit">Cadastrar</button>
+            </div>
+
+        </section>
+        <section class="box">
+            <header class="cabecalho">
+                <h1 id="titulo">Livros Disponíveis</h1>
+                <p id="subtitulo">Consulte os livros cadastrados abaixo.</p>
+            </header>
+            <div style="height: 440px; margin: 10px;">
+                <div class="campo">
+                    <select id="categoria" style="width: 100%; padding: 10px; border-radius: 5px;">
+                        <option selected disabled value="">Selecione...</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Suspense">Suspense</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Policial">Policial</option>
+                        <option value="Auto-ajuda">Auto-ajuda</option>
+                        <option value="Finanças">Finanças</option>
+                        <option value="Sci-fi">Sci-fi</option>
+                        <option value="Biografia">Biografia</option>
+                    </select>
+                </div>
+                <div class="books-container" style="height: 380px; margin: 10px;">
+                    <ul id="books-ul"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
