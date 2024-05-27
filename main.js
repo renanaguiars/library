@@ -26,9 +26,26 @@ btn.addEventListener("click", (event) => {
     };
     livrosArr.push(livro);
     salvarLivros();
+    exibirLivros();
 });
 categoria.addEventListener('change', (e) => {
     e.preventDefault();
+    exibirLivros();
+});
+function salvarLivros() {
+    localStorage.setItem('livrosArr', JSON.stringify(livrosArr));
+}
+function getLivros() {
+    return JSON.parse(localStorage.getItem('livrosArr') || '[]');
+}
+function removerLivro(id) {
+    const livros = getLivros();
+    const livrosAtualizados = livros.filter((livro) => livro.id !== id);
+    localStorage.setItem('livrosArr', JSON.stringify(livrosAtualizados));
+    livrosArr = livrosAtualizados;
+    exibirLivros();
+}
+function exibirLivros() {
     listaLivros.innerHTML = '';
     const livros = getLivros();
     const generoSelecionado = categoria.value;
@@ -37,12 +54,18 @@ categoria.addEventListener('change', (e) => {
         const li = document.createElement('li');
         li.classList.add('book-li');
         li.textContent = `${livro.nome} - ${livro.autor}`;
+        const img = document.createElement('img');
+        img.setAttribute('src', 'imagens/excluir.png');
+        img.classList.add('btn-delete');
+        img.addEventListener('click', () => {
+            const res = confirm(`Deseja mesmo remover o livro ${livro.nome} ?`);
+            if (res) {
+                li.remove();
+                removerLivro(livro.id);
+            }
+        });
+        li.appendChild(img);
         listaLivros.appendChild(li);
     });
-});
-function salvarLivros() {
-    localStorage.setItem('livrosArr', JSON.stringify(livrosArr));
 }
-function getLivros() {
-    return JSON.parse(localStorage.getItem('livrosArr') || '[]');
-}
+exibirLivros();
