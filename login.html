@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Livros - Biblioteca Central</title>
+</head>
+<body>
+    <main class="container">
+        <div id="container-principal">
+            <div class="container-login">
+                <div class="titulo-login">
+                    <h1>Login</h1>
+                </div>
+                <div class="area-input">
+                    <div>
+                        <input class="campo-login" id="user" type="text" placeholder="Usuário" required>
+                    </div>
+                    <div>
+                        <input class="campo-login" id="psw" type="password" placeholder="Senha" required>
+                    </div>
+                </div>
+                <div class="esqueceu-box">
+                    <p class="esqueceu-button">Esqueceu a senha?</p>
+                </div>
+                <div class="button-box">
+                    <button id="entrar-button" type="submit">Entrar</button>
+                </div>
+                <div style="text-align: center; font-size: 10px; color: #dedede;">
+                    <p>ou</p>
+                </div>
+                <div class="button-box">
+                    <button class="cadastrar-button">Criar minha conta</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Página de Login
+        let user = document.getElementById('user');
+        let password = document.getElementById('psw');
+        let entrarBtn = document.getElementById('entrar-button');
+        let acesso = false;
+
+        entrarBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            if(user.value == 'admin' && password.value == '1234'){
+                alert('Acesso permitido.')
+                window.location.href = "index.html";
+                return false;
+            } else {
+                alert('Acesso negado.');
+                return false;
+            }
+        })
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
